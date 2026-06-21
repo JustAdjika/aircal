@@ -17,7 +17,8 @@ import { Point } from "./modules/points/points.model";
       password: process.env.MYSQL_PASSWORD,
       database: process.env.MYSQL_NAME,
       models: [Point],
-      autoLoadModels: true
+      autoLoadModels: true,
+      logging: false
     }),
     PointsModule
   ]

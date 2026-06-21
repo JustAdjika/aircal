@@ -11,10 +11,14 @@ export class PointsRepository {
     ) {}
 
     async findByICAO(icao: string) {
-        return this.pointModel.findByPk(icao)
+        return await this.pointModel.findByPk(icao)
+    }
+
+    async findByIATA(iata: string) {
+        return await this.pointModel.findOne({ where: { IATA: iata } })
     }
 
     async newPoint(pointCreationAttrs: pointsTypes.pointCreationAttrs) {
-        return this.pointModel.create(pointCreationAttrs)
+        await this.pointModel.create(pointCreationAttrs)
     }
 }
