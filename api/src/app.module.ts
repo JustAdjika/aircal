@@ -2,9 +2,6 @@ import { Module } from "@nestjs/common";
 import { PointsModule } from './modules/points/points.module';
 import { SequelizeModule } from "@nestjs/sequelize";
 import { ConfigModule } from "@nestjs/config";
-import { Point } from "./modules/points/points.model";
-import { CargoController } from './modules/cargo/cargo.controller';
-import { CargoService } from './modules/cargo/cargo.service';
 import { CargoModule } from './modules/cargo/cargo.module';
 import { FlightsModule } from './modules/flights/flights.module';
 
@@ -20,7 +17,7 @@ import { FlightsModule } from './modules/flights/flights.module';
       username: process.env.MYSQL_USERNAME,
       password: process.env.MYSQL_PASSWORD,
       database: process.env.MYSQL_NAME,
-      models: [Point],
+      models: [],
       autoLoadModels: true,
       logging: false
     }),
