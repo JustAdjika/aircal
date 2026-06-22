@@ -3,7 +3,7 @@ import { IsString } from "class-validator";
 import { Cargo } from "../cargo.model";
 
 export class GetCargoByFlightDto {
-    @ApiProperty({ example: 'AB123456', description: 'Номер рейса' })
+    @ApiProperty({ example: 'VSV3732', description: 'Номер рейса' })
     @IsString({ message: 'Must be string' })
     readonly flightNumber: string
 }

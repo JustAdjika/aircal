@@ -6,11 +6,11 @@ import * as flightsTypes from '../flights.types'
 export class UpdateStatusFlightDto {
     @ApiProperty({ example: 'VSV3732', description: 'Номер рейса' })
     @IsString({message: 'Must be string'})
-    flightNumber: string;
+    readonly flightNumber: string;
 
     @ApiProperty({ example: 'checkin', description: 'Статус рейса' })
     @IsEnum(flightsTypes.flightsStatus)
-    status: flightsTypes.flightsStatus;
+    readonly status: flightsTypes.flightsStatus;
 }
 
 export class UpdateStatusFlightMetaDto {

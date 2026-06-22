@@ -4,6 +4,7 @@ import { SequelizeModule } from "@nestjs/sequelize";
 import { ConfigModule } from "@nestjs/config";
 import { CargoModule } from './modules/cargo/cargo.module';
 import { FlightsModule } from './modules/flights/flights.module';
+import { PassengersModule } from './modules/passengers/passengers.module';
 
 @Module({
   imports: [
@@ -23,7 +24,8 @@ import { FlightsModule } from './modules/flights/flights.module';
     }),
     PointsModule,
     CargoModule,
-    FlightsModule
+    FlightsModule,
+    PassengersModule
   ]
 })
 export class AppModule {}

@@ -33,4 +33,8 @@ export class FlightsService {
 
         return { context: `View all flights list`, flightList };
     }
+
+    async getFlightByNumber(flightNumber: string) {
+        return await this.flightsRepository.findByFlightNumber(flightNumber);
+    }
 }

@@ -5,14 +5,22 @@ import { GenerateId } from 'src/common/utilities/generatorId';
 import { DeleteCargoDto, DeleteCargoMetaDto } from './dto/delete-cargo.dto';
 import { GetCargoByTicketDto, GetCargoByTicketMetaDto } from './dto/get-cargo-by-ticket.dto';
 import { GetCargoByFlightDto, GetCargoByFlightMetaDto } from './dto/get-cargo-by-flight.dto';
-import { logger } from 'src/common/utilities/logger';
+import { PassengersService } from '../passengers/passengers.service';
+import { FlightsService } from '../flights/flights.service';
 
 @Injectable()
 export class CargoService {
-    constructor(private readonly cargoRepository: CargoRepository) {}
+    constructor(
+        private readonly cargoRepository: CargoRepository,
+        private readonly passengersService: PassengersService,
+        private readonly flightsService: FlightsService
+    ) {}
 
     async create(dto: CreateCargoDto): Promise<CreateCargoMetaDto> {
         let cargoId;
+
+        if(!await this.flightsService.getFlightByNumber(dto.flightNumber)) throw new HttpException('Flight undefined', HttpStatus.NOT_FOUND);
+        if(!await this.passengersService.getTicketById(dto.ticketId)) throw new HttpException('Ticket undefined', HttpStatus.NOT_FOUND);
 
         for(let i = 0; i <= 30; i++) {
             if(i == 30) throw new HttpException('Failed to generate unique cargo ID', HttpStatus.INTERNAL_SERVER_ERROR);
@@ -25,8 +33,6 @@ export class CargoService {
                 break; 
             }
         }
-        
-        console.log(cargoId);
 
         await this.cargoRepository.new({ ...dto, cargoId: cargoId });
         

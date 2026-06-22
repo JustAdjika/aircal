@@ -10,6 +10,9 @@ import { SequelizeModule } from '@nestjs/sequelize';
   providers: [FlightsService, FlightsRepository],
   imports: [
     SequelizeModule.forFeature([Flight])
+  ],
+  exports: [
+    FlightsService
   ]
 })
 export class FlightsModule {}

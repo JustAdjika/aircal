@@ -5,23 +5,23 @@ import { Flight } from '../flights.model';
 export class CreateFlightDto {
     @ApiProperty({ example: 'VSV3732', description: 'Номер рейса' })
     @IsString({message: 'Must be string'})
-    flightNumber: string;
+    readonly flightNumber: string;
 
     @ApiProperty({ example: 'UAAA', description: 'ИКАО аэропорта вылета' })
     @Matches(/^[A-Z]{4}$/, {message: 'departure ICAO contain exactly 4 uppercase Latin letters'})
-    departure: string;
+    readonly departure: string;
 
     @ApiProperty({ example: 'UACC', description: 'ИКАО аэропорта прибытия' })
     @Matches(/^[A-Z]{4}$/, {message: 'arrival ICAO contain exactly 4 uppercase Latin letters'})
-    arrival: string;
+    readonly arrival: string;
 
     @ApiProperty({ example: 80, description: 'Время полета (в минутах)' })
     @IsNumber({}, {message: 'Must be number'})
-    blockTime: number;
+    readonly blockTime: number;
 
     @ApiProperty({ example: 'UAAA SID ETEDA W333 TULPI L998 OGLAB N170 GIREM W333 BANOS STAR UACC', description: 'Маршрут полета' })
     @IsString({message: 'Must be string'})
-    route: string;
+    readonly route: string;
 }
 
 export class CreateFlightMetaDto {
