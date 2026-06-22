@@ -3,6 +3,10 @@ import { PointsModule } from './modules/points/points.module';
 import { SequelizeModule } from "@nestjs/sequelize";
 import { ConfigModule } from "@nestjs/config";
 import { Point } from "./modules/points/points.model";
+import { CargoController } from './modules/cargo/cargo.controller';
+import { CargoService } from './modules/cargo/cargo.service';
+import { CargoModule } from './modules/cargo/cargo.module';
+import { FlightsModule } from './modules/flights/flights.module';
 
 @Module({
   imports: [
@@ -20,7 +24,9 @@ import { Point } from "./modules/points/points.model";
       autoLoadModels: true,
       logging: false
     }),
-    PointsModule
+    PointsModule,
+    CargoModule,
+    FlightsModule
   ]
 })
 export class AppModule {}

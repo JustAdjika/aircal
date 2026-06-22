@@ -12,7 +12,7 @@ export class PointsService {
         if(await this.pointsRepository.findByICAO(dto.ICAO)) throw new HttpException('A point with the same ICAO already exists', HttpStatus.CONFLICT);
         if(await this.pointsRepository.findByIATA(dto.IATA)) throw new HttpException('A point with the same IATA already exists', HttpStatus.CONFLICT);
         
-        await this.pointsRepository.newPoint(dto);
+        await this.pointsRepository.new(dto);
 
         return { context: `Point ${dto.ICAO} created` }
     }

@@ -19,8 +19,8 @@ export class PointsRepository {
         return await this.pointModel.findOne({ where: { IATA: iata } })
     }
 
-    async newPoint(pointCreationAttrs: pointsTypes.pointCreationAttrs) {
-        await this.pointModel.create(pointCreationAttrs)
+    async new(pointCreationAttrs: pointsTypes.pointCreationAttrs) {
+        return await this.pointModel.create(pointCreationAttrs)
     }
 
     async delete(point: Point) {
