@@ -16,7 +16,7 @@ export class CreatePointDto {
     readonly ICAO: string;
     
     @ApiProperty({ example: 'ALA', description: 'ИАТА код аэропорта' })
-    @Matches(/^[A-Z]{3}$/, {message: 'ICAO contain exactly 3 uppercase Latin letters'})
+    @Matches(/^[A-Z]{3}$/, {message: 'IATA contain exactly 3 uppercase Latin letters'})
     readonly IATA: string;
     
     @ApiProperty({ example: 'kz', description: 'Код страны аэропорта' })

@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/sequelize";
 import { Point } from "./points.model";
 import * as pointsTypes from "./points.types";
+import { DeletePointDto } from "./dto/delete-point.dto";
 
 @Injectable()
 export class PointsRepository {
@@ -20,5 +21,13 @@ export class PointsRepository {
 
     async newPoint(pointCreationAttrs: pointsTypes.pointCreationAttrs) {
         await this.pointModel.create(pointCreationAttrs)
+    }
+
+    async delete(point: Point) {
+        await point.destroy();
+    }
+
+    async update(point: Point, options: Partial<Point> ) {
+        await point.update(options)
     }
 }
